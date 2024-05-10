@@ -24,7 +24,6 @@ void Menu::displayRecordList() {
 }
 void Menu::getUserChoice() {
 	cin >> num;
-	system("CLS");
 	switch (num) {
 	case 1:
 		addRecord();
@@ -42,8 +41,10 @@ void Menu::getUserChoice() {
 		updateFile();
 		break;
 	case 5:
+		system("cls");
 		cout << "Enter the new password " << endl;
-		cin >> newpass;
+		cin.ignore();
+		getline(cin,newpass);
 		setPassword(newpass);
 		break;
 	case 6:

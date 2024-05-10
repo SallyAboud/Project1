@@ -11,4 +11,4 @@ public:
 	void setPassword(string newPassword);
 
 };
-#endif PasswordManager
+#endif

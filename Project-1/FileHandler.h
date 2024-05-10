@@ -10,6 +10,6 @@ public:
 	void saveToFile();
 	void readFromFile();
 	void updateFile();
+	void fileAdder();
 };
-
-#endif FileHandler
+#endif

@@ -12,10 +12,11 @@ protected:
 	string address;
 	string dateTime;
 	static int s;
+	int id;
 public:
 	void addRecord();
 	void viewRecord();
 	void editRecord();
 	void deleteRecord();
 };
-#endif // !1
+#endif

@@ -8,8 +8,17 @@
 using namespace std;
 int main()
 {
-	Menu a;
+	Menu a,b,c,d,e,f;
 	a.displayMainMenu();
-
-
+	b.addRecord();
+	b.saveToFile();
+	c.addRecord();
+	c.saveToFile();
+	d.addRecord();
+	d.saveToFile();
+	e.addRecord();
+	e.saveToFile();
+	f.addRecord();
+	f.saveToFile();
+	f.fileAdder();
 }
