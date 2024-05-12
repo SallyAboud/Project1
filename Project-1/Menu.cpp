@@ -77,7 +77,7 @@ void Menu::getUserChoice() {
 	case 10: 
 		displayRecordList();
 		cout<<"if you want to clear the screen enter 0 "<<endl;
-		cin>>x
+		cin>>x ;
 		if(x==0){
 			system("cls");}
 		
