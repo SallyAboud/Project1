@@ -10,7 +10,8 @@ protected:
 	string taskDuration;
 	string name;
 	string address;
-	string dateTime;
+	string date;
+	string time ;
 	static int s;
 	int id;
 public:
