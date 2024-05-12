@@ -9,7 +9,6 @@ using namespace std;
 int num;
 string newpass;
 void Menu::displayMainMenu() {
-	system("cls");
 	cout << "\t\tMain Menu\n1.Add Record\n2.View Record\n3.Edit Record\n4.Delete Record\n5.Make New Password\n6.Display New Password\n7.Save Record To File\n8.Read Record From File\n9.Update File\n10.Quit\n" << endl;
 	getUserChoice();
 
@@ -20,7 +19,8 @@ void Menu::displayRecordList() {
 	cout << "\n\tName\t\t" << name
 	<< "\n\tTask_duration\t" << taskDuration
 	<< "\n\tAddress\t\t" << address
-	<< "\n\tDate_and_time\t" << dateTime << "\n";
+	<< "\n\tDate\t" << date 
+	<< "\n\ttime\t" << time << "\n";
 	}
 	else {
 		cout<<"Incorrect password"<<endl;
@@ -31,6 +31,7 @@ void Menu::displayRecordList() {
 void Menu::getUserChoice() {
 	cin >> num;
 	int x;
+	string p="";
 	switch (num) {
 	case 1:
 		addRecord();
@@ -39,15 +40,16 @@ void Menu::getUserChoice() {
 		break;
 	case 2:
 		viewRecord();
-		system("cls");
+		cout << "if you want to clear the screen enter 0 " << endl;
+		cin >> x;
+		if (x == 0) {
+			system("cls");
+		}
 		break;
 	case 3:
 		editRecord();
 		updateFile();
-		cout<<"if you want to clear the screen enter 0 "<<endl;
-		cin>>x ;
-		if(x==0){
-			system("cls");}
+		system("cls");
 		break;
 	case 4:
 		deleteRecord();
@@ -62,8 +64,14 @@ void Menu::getUserChoice() {
 		system("cls");
 		break;
 	case 6:
-		getPassword();
-		
+		cout << "What is the password manager?\n";
+		cin >> p;
+		while(p != managerpass){
+			cout << "incorrect password";
+			cout << "What is the password manager?\n";
+			cin >> p;
+		} 
+		cout << getPassword() << "\n";
 		break;
 	case 7:
 		saveToFile();
@@ -79,8 +87,8 @@ void Menu::getUserChoice() {
 		cout<<"if you want to clear the screen enter 0 "<<endl;
 		cin>>x ;
 		if(x==0){
-			system("cls");}
-		
+			system("cls");
+		}
 	case 11:
 		cout << "quit main menu";
 		fileAdder();
@@ -88,7 +96,7 @@ void Menu::getUserChoice() {
 	default:
 		cout << "Invalid Number ";
 	}
-	while (num != 10) {
+	while (num != 11) {
 		displayMainMenu();
 	}
 }

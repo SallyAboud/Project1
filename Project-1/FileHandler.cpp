@@ -10,9 +10,10 @@ void FileHandler::saveToFile() {
 	path += ".txt";
 	ofstream project(path);
 	project << "Name\t\t" << name
-		<< "\nTask_duration\t" << taskDuration
+		<< "\nTask duration\t" << taskDuration
 		<< "\nAddress\t\t" << address
-		<< "\nDate_and_time\t" << dateTime << "\n";
+		<< "\nDate\t\t" << date
+		<< "\nTime\t\t" << time << "\n";
 	project.close();
 	cout << "The file is saved\n";
 	cout << id << "\n" << path;
