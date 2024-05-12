@@ -15,8 +15,8 @@ void Menu::displayMainMenu() {
 
 }
 void Menu::displayRecordList() {
-	stirng pass;
-	if(pass==getpassword){
+	string pass;
+	if(pass==getpassword()){
 		cout << "\n\tName\t\t" << name
 	<< "\n\tTask_duration\t" << taskDuration
 	<< "\n\tAddress\t\t" << address
