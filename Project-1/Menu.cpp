@@ -16,8 +16,8 @@ void Menu::displayMainMenu() {
 }
 void Menu::displayRecordList() {
 	string pass;
-	if(pass==getpassword()){
-		cout << "\n\tName\t\t" << name
+	if(pass==getPassword()){
+	cout << "\n\tName\t\t" << name
 	<< "\n\tTask_duration\t" << taskDuration
 	<< "\n\tAddress\t\t" << address
 	<< "\n\tDate_and_time\t" << dateTime << "\n";
@@ -25,6 +25,7 @@ void Menu::displayRecordList() {
 	else {
 		cout<<"Incorrect password"<<endl;
 		displayRecordList();
+	}
 		
 }
 void Menu::getUserChoice() {
