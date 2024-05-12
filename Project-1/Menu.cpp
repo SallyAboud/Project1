@@ -14,13 +14,17 @@ void Menu::displayMainMenu() {
 
 }
 void Menu::displayRecordList() {
-	ifstream project("project.txt");
-	char x;
-	while (!project.eof()) {
-		project.get(x);
-		cout << x;
+	stirng pass;
+	if(pass==getpassword){
+		cout << "\n\tName\t\t" << name
+	<< "\n\tTask_duration\t" << taskDuration
+	<< "\n\tAddress\t\t" << address
+	<< "\n\tDate_and_time\t" << dateTime << "\n";
 	}
-	project.close();
+	else {
+		cout<<"Incorrect password"<<endl;
+		displayRecordList();
+		
 }
 void Menu::getUserChoice() {
 	cin >> num;
@@ -59,8 +63,12 @@ void Menu::getUserChoice() {
 	case 9:
 		updateFile();
 		break;
-	case 10:
+	case 10: 
+		diplayRecordList();
+		
+	case 11:
 		cout << "quit main menu";
+		fileAdder();
 		break;
 	default:
 		cout << "Invalid Number ";
