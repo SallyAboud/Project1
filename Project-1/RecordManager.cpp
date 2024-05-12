@@ -23,25 +23,25 @@ void RecordManager::addRecord() {
 }
 void RecordManager::viewRecord() {
 	system("cls");
-	/*cout << "What is the password?\n";
+	cout << "What is the password?\n";
 	string pass;
 	getline(cin, pass);
-	if (pass == getPassword()) {*/
+	if (pass == managerpass) {
 		cout << "\n\tName\t\t" << name
 			<< "\n\tTask_duration\t" << taskDuration
 			<< "\n\tAddress\t\t" << address
 			<< "\n\tDate_and_time\t" << dateTime << "\n";
-	//}
-	/*else {
+	}
+	else {
 		cout << "incorrect password\n";
 		viewRecord();
-	}*/
+	}
 }
 void RecordManager::editRecord() {
-	//cout << "What is the password?\n";
-	//string pass;
-	//cin >> pass;
-	//if (pass==getPassword() ){
+	cout << "What is the manager password?\n";
+	string pass;
+	cin >> pass;
+	if (pass==managerpass ){
 		cout << "Do you want to make changes to:\n1.Name\n2.Task Duration\n3.Address\n4.Date and Time\n5.Quit\n";
 		int a;
 		cin >> a;
@@ -74,21 +74,22 @@ void RecordManager::editRecord() {
 			cin >> a;
 		}
 		system("CLS");
-	/* }
+	 }
 	else {
 		cout << "incorrect password\n";
 		editRecord();
-	}*/
+	}
 }
 void RecordManager::deleteRecord() {
 	cout << "What is the password?\n";
 	string pass;
 	cin >> pass;
-	if (pass == getPassword()) {
+	if (pass == managerpass) {
 		name = "";
 		taskDuration = "";
 		address = "";
 		dateTime = "";
+		id=0;
 		system("CLS");
 	}
 	else {
