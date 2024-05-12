@@ -15,8 +15,6 @@ void FileHandler::saveToFile() {
 		<< "\nDate\t\t" << date
 		<< "\nTime\t\t" << time << "\n";
 	project.close();
-	cout << "The file is saved\n";
-	cout << id << "\n" << path;
 }
 void FileHandler::readFromFile() {
 	string path = "d:\\Files\\Record";

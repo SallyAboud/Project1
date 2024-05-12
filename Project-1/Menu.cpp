@@ -9,18 +9,23 @@ using namespace std;
 int num;
 string newpass;
 void Menu::displayMainMenu() {
-	cout << "\t\tMain Menu\n1.Add Record\n2.View Record\n3.Edit Record\n4.Delete Record\n5.Make New Password\n6.Display New Password\n7.Save Record To File\n8.Read Record From File\n9.Update File\n10.Quit\n" << endl;
+	cout << "\t\tMain Menu\n1.Add Record\n2.View Record List\n"
+		<<"3.Edit Record\n4.Delete Record\n5.Make New Password\n"
+		<<"6.Display New Password\n7.Display Record List\n"
+		<<"8.Quit\n" << endl;
 	getUserChoice();
 
 }
 void Menu::displayRecordList() {
 	string pass;
+	cout << "Enter your password\n";
+	getline(cin >> ws, pass);
 	if(pass==getPassword()){
 	cout << "\n\tName\t\t" << name
 	<< "\n\tTask_duration\t" << taskDuration
 	<< "\n\tAddress\t\t" << address
-	<< "\n\tDate\t" << date 
-	<< "\n\ttime\t" << time << "\n";
+	<< "\n\tDate\t\t" << date 
+	<< "\n\ttime\t\t" << time << "\n";
 	}
 	else {
 		cout<<"Incorrect password"<<endl;
@@ -32,11 +37,23 @@ void Menu::getUserChoice() {
 	cin >> num;
 	int x;
 	string p="";
+	string setPass;
 	switch (num) {
 	case 1:
+		cout << "What is the password manager?\n";
+		cin >> p;
+		while (p != managerpass) {
+			cout << "incorrect password";
+			cout << "What is the password manager?\n";
+			cin >> p;
+		}
 		addRecord();
+		cout << "What is the Password you want to set?\n";
+		getline(cin >> ws, setPass);
+		setPassword(setPass);
 		saveToFile();
 		system("cls");
+		
 		break;
 	case 2:
 		viewRecord();
@@ -48,7 +65,6 @@ void Menu::getUserChoice() {
 		break;
 	case 3:
 		editRecord();
-		updateFile();
 		system("cls");
 		break;
 	case 4:
@@ -57,9 +73,15 @@ void Menu::getUserChoice() {
 		system("cls");
 		break;
 	case 5:
+		cout << "What is the password manager?\n";
+		cin >> p;
+		while (p != managerpass) {
+			cout << "Incorrect password";
+			cout << "What is the password manager?\n";
+			cin >> p;
+		}
 		cout << "Enter the new password " << endl;
-		cin.ignore();
-		getline(cin,newpass);
+		getline(cin >> ws, newpass);
 		setPassword(newpass);
 		system("cls");
 		break;
@@ -67,36 +89,33 @@ void Menu::getUserChoice() {
 		cout << "What is the password manager?\n";
 		cin >> p;
 		while(p != managerpass){
-			cout << "incorrect password";
+			cout << "Incorrect password\n";
 			cout << "What is the password manager?\n";
 			cin >> p;
 		} 
-		cout << getPassword() << "\n";
+		cout << "The password is:\n" << getPassword() << "\n";
+		cout << "if you want to clear the screen enter 0 " << endl;
+		cin >> x;
+		if (x == 0) {
+			system("cls");
+		}
 		break;
-	case 7:
-		saveToFile();
-		break;
-	case 8:
-		readFromFile();
-		break;
-	case 9:
-		updateFile();
-		break;
-	case 10: 
+	case 7: 
 		displayRecordList();
 		cout<<"if you want to clear the screen enter 0 "<<endl;
 		cin>>x ;
 		if(x==0){
 			system("cls");
 		}
-	case 11:
+		break;
+	case 8:
 		cout << "quit main menu";
 		fileAdder();
 		break;
 	default:
 		cout << "Invalid Number ";
 	}
-	while (num != 11) {
+	while (num != 8) {
 		displayMainMenu();
 	}
 }

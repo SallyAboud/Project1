@@ -8,6 +8,6 @@
 using namespace std;
 int main()
 {
-	Menu a,b,c,d,e,f;
+	Menu a;
 	a.displayMainMenu();
 }
