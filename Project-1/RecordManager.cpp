@@ -9,7 +9,6 @@ int RecordManager::s = 0;
 void RecordManager::addRecord() {
 	s += 1;
 	id = s;
-	//system("cls");
 	cout << "What is your name?\n";
 	getline(cin>>ws, name);
 	cout << "What is your task duration?\n";
@@ -18,11 +17,8 @@ void RecordManager::addRecord() {
 	getline(cin>>ws, address);
 	cout << "What is the date and time?\n";
 	getline(cin>>ws, dateTime);
-
-	system("CLS");
 }
 void RecordManager::viewRecord() {
-	system("cls");
 	cout << "What is the password?\n";
 	string pass;
 	getline(cin, pass);
@@ -73,7 +69,6 @@ void RecordManager::editRecord() {
 			cout << "do you want to make any other changes to:\n1.Name\n2.Task Duration\n3.Address\n4.Date and Time\n5.quit";
 			cin >> a;
 		}
-		system("CLS");
 	 }
 	else {
 		cout << "incorrect password\n";
@@ -90,7 +85,6 @@ void RecordManager::deleteRecord() {
 		address = "";
 		dateTime = "";
 		id=0;
-		system("CLS");
 	}
 	else {
 		cout << "incorrect password\n";
