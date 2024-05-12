@@ -5,8 +5,9 @@
 using namespace std;
 class PasswordManager
 {
+protected:
 	string password;
-string managerpass = "SallyHaneen";
+	string managerpass = "SallyHaneen";
 public:
 	string getPassword();
 	void setPassword(string newPassword);
