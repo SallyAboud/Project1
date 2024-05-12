@@ -9,34 +9,33 @@ int RecordManager::s = 0;
 void RecordManager::addRecord() {
 	s += 1;
 	id = s;
-	system("cls");
+	//system("cls");
 	cout << "What is your name?\n";
-	cin.ignore();
-	getline(cin, name);
+	getline(cin>>ws, name);
 	cout << "What is your task duration?\n";
-	getline(cin, taskDuration);
+	getline(cin>>ws, taskDuration);
 	cout << "What is your address?\n";
-	getline(cin, address);
+	getline(cin>>ws, address);
 	cout << "What is the date and time?\n";
-	getline(cin, dateTime);
+	getline(cin>>ws, dateTime);
 
 	system("CLS");
 }
 void RecordManager::viewRecord() {
 	system("cls");
-	cout << "What is the password?\n";
+	/*cout << "What is the password?\n";
 	string pass;
 	getline(cin, pass);
-	if (pass == getPassword()) {
+	if (pass == getPassword()) {*/
 		cout << "\n\tName\t\t" << name
 			<< "\n\tTask_duration\t" << taskDuration
 			<< "\n\tAddress\t\t" << address
 			<< "\n\tDate_and_time\t" << dateTime << "\n";
-	}
-	else {
+	//}
+	/*else {
 		cout << "incorrect password\n";
 		viewRecord();
-	}
+	}*/
 }
 void RecordManager::editRecord() {
 	//cout << "What is the password?\n";
