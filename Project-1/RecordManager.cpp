@@ -15,8 +15,10 @@ void RecordManager::addRecord() {
 	getline(cin>>ws, taskDuration);
 	cout << "What is your address?\n";
 	getline(cin>>ws, address);
-	cout << "What is the date and time?\n";
-	getline(cin>>ws, dateTime);
+	cout << "What is the date  (dd/mm/yyyy)?\n";
+	getline(cin>>ws, date);
+	cout << "What is the time (00:00 pm)?\n";
+	getline(cin>>ws, time);
 }
 void RecordManager::viewRecord() {
 	cout << "What is the password?\n";
@@ -24,9 +26,9 @@ void RecordManager::viewRecord() {
 	getline(cin, pass);
 	if (pass == managerpass) {
 		cout << "\n\tName\t\t" << name
-			<< "\n\tTask_duration\t" << taskDuration
+			<< "\n\tTask duration\t" << taskDuration
 			<< "\n\tAddress\t\t" << address
-			<< "\n\tDate_and_time\t" << dateTime << "\n";
+			<< "\n\tDate\t" << date << "\n"<< "\n\Time\t" << time << "\n";
 	}
 	else {
 		cout << "incorrect password\n";
@@ -38,31 +40,30 @@ void RecordManager::editRecord() {
 	string pass;
 	cin >> pass;
 	if (pass==managerpass ){
-		cout << "Do you want to make changes to:\n1.Name\n2.Task Duration\n3.Address\n4.Date and Time\n5.Quit\n";
+		cout << "Do you want to make changes to:\n1.Name\n2.Task Duration\n3.Address\n4.Date\n5.Time\n6.Quit\n";
 		int a;
 		cin >> a;
-		while (a != 5) {
+		while (a != 6) {
 			switch (a) {
 			case 1:
-				cin.ignore();
 				cout << "What is your new name?\n";
 				getline(cin, name);
 				break;
 			case 2:
-				cin.ignore();
 				cout << "What is your  new task duration?\n"; 
 				cin >> taskDuration;
 				break;
 			case 3:
-				cin.ignore();
 				cout << "What is your new address?\n";
 				cin>> address;
 				break;
 			case 4:
-				cin.ignore();
 				cout << "What is the new date and time?\n";
-				cin>> dateTime;
+				cin>> date;
 				break;
+			case 5 :
+				cout << "What is the new time?\n";
+				cin>> time;
 			default:
 				cout << "invalid number";
 			}
