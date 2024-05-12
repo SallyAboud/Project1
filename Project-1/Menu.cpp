@@ -30,6 +30,7 @@ void Menu::displayRecordList() {
 }
 void Menu::getUserChoice() {
 	cin >> num;
+	int x;
 	switch (num) {
 	case 1:
 		addRecord();
@@ -41,11 +42,10 @@ void Menu::getUserChoice() {
 		system("cls");
 		break;
 	case 3:
-		int x;
 		editRecord();
 		updateFile();
 		cout<<"if you want to clear the screen enter 0 "<<endl;
-		cin>>x
+		cin>>x ;
 		if(x==0){
 			system("cls");}
 		break;
@@ -75,8 +75,7 @@ void Menu::getUserChoice() {
 		updateFile();
 		break;
 	case 10: 
-		diplayRecordList();
-		int x ;
+		displayRecordList();
 		cout<<"if you want to clear the screen enter 0 "<<endl;
 		cin>>x
 		if(x==0){
