@@ -194,8 +194,6 @@ void RecordManager::editRecord() {
 				}
 				tempFile.close();
 				projectEdited.close();
-
-
 				break;
 			case 4:
 				cout << "What is the new date?   (DD/MM/YYYY)\n";
@@ -268,7 +266,7 @@ void RecordManager::editRecord() {
 		}
 	}
 	else {
-		cout << "incorrect password\n";
+		cout << "Incorrect password\n";
 		editRecord();
 	}
 }
@@ -306,7 +304,7 @@ void RecordManager::deleteRecord() {
 				editRecord();
 			}
 			else if (yn != 2) {
-				cout << "invaild number\n";
+				cout << "Invaild number\n";
 			}
 		}
 		else {
@@ -319,7 +317,7 @@ void RecordManager::deleteRecord() {
 		}
 	}
 	else {
-		cout << "incorrect password\n";
+		cout << "Incorrect password\n";
 		deleteRecord();
 	}
 }
