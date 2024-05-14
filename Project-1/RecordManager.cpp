@@ -134,8 +134,6 @@ void RecordManager::editRecord() {
 			case 2:
 				cout << "What is your  new task duration?\n";
 				getline(cin >> ws, editTaskDuration);
-				cout << "What is your new name?\n";
-				getline(cin >> ws, editTaskDuration);
 
 				while (!editProject.eof()) {
 					editProject >> read;
@@ -277,7 +275,7 @@ void RecordManager::deleteRecord() {
 	int d = 0;
 	cin >> pass;
 	if (pass == managerpass) {
-		cout << "What is the name of the File you want to edit?\n";
+		cout << "What is the name of the File you want to delete?\n";
 		getline(cin >> ws, DeleteName);
 		for (int i = 1; i <= s; i++) {
 			string path = "d:\\Files\\Record";
