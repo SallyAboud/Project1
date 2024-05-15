@@ -96,9 +96,6 @@ void Menu::getUserChoice() {
 			cin >> p;
 		}
 		addRecord();
-		cout << "What is the Password you want to set?\n";
-		getline(cin >> ws, setPass);
-		setPassword(setPass);
 		saveToFile();
 		system("cls");
 		

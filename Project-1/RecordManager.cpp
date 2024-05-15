@@ -78,7 +78,7 @@ void RecordManager::editRecord() {
 		}
 		if (d == 0) {
 			cout << "There is no such a record name\nDo you still want to make an edit to a record"
-				<< "\n1.Yes\t\t\t2.No";
+				<< "\n1.Yes\t\t\t2.No\n";
 			int yn;
 			cin >> yn;
 			if (yn == 1) {
@@ -264,9 +264,10 @@ void RecordManager::editRecord() {
 				projectEdited.close();
 				break;
 			default:
-				cout << "invalid number";
+				cout << "invalid number\n";
 			}
-			cout << "do you want to make any other changes to:\n1.Name\n2.Task Duration\n3.Address\n4.Date\n5.Time\n6.quit";
+			cout << "do you want to make any other changes to:\n1.Name\n2.Task Duration"
+				<< "\n3.Address\n4.Date\n5.Time\n6.quit\n";
 			cin >> a;
 		}
 	}
@@ -302,7 +303,7 @@ void RecordManager::deleteRecord() {
 		}
 		if (d == 0) {
 			cout << "There is no such a record name\nDo you still want to delete a record"
-				<< "\n1.Yes\t\t\t2.No";
+				<< "\n1.Yes\t\t\t2.No\n";
 			int yn;
 			cin >> yn;
 			if (yn == 1) {
