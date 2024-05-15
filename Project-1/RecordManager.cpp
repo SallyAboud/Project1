@@ -2,24 +2,30 @@
 #include<iostream>
 #include<string>
 #include"PasswordManager.h"
-#include<stdlib.h>
 #include<fstream>
+#include<string>
 using namespace std;
 int RecordManager::s = 0;
 void RecordManager::addRecord() {
 	s += 1;
 	id = s;
+	string setPass;
 	cout << "What is your name?\n";
-	getline(cin>>ws, name);
+	getline(cin >> ws, name);
 	cout << "What is your task duration?\n";
-	getline(cin>>ws, taskDuration);
+	getline(cin >> ws, taskDuration);
 	cout << "What is your address?\n";
-	getline(cin>>ws, address);
+	getline(cin >> ws, address);
 	cout << "What is the date  (DD/MM/YYYY)?\n";
-	getline(cin>>ws, date);
+	getline(cin >> ws, date);
 	cout << "What is the time (00:00 Pm/Am)?\n";
-	getline(cin>>ws, time);
-	
+	getline(cin >> ws, time);
+	cout << "What is the Password you want to set?\n";
+	getline(cin >> ws, setPass);
+	setPassword(setPass);
+	string p = setPass;
+	passes.push_back(p);
+
 }
 void RecordManager::viewRecord() {
 	cout << "What is the manager password?\n";
@@ -72,18 +78,18 @@ void RecordManager::editRecord() {
 		}
 		if (d == 0) {
 			cout << "There is no such a record name\nDo you still want to make an edit to a record"
-				<<"\n1.Yes\t\t\t2.No";
+				<< "\n1.Yes\t\t\t2.No";
 			int yn;
 			cin >> yn;
 			if (yn == 1) {
 				editRecord();
 			}
 			else if (yn != 2) {
-				cout << "invaild number\n";
+				cout << "Invaild number\n";
 			}
 		}
 		cout << "Do you want to make changes to:\n1.Name\n2.Task Duration"
-			<<"\n3.Address\n4.Date\n5.Time\n6.Quit\n";
+			<< "\n3.Address\n4.Date\n5.Time\n6.Quit\n";
 		int a;
 		string editName, editTaskDuration, editAddress, editDate, editTime;
 		cin >> a;
@@ -101,12 +107,13 @@ void RecordManager::editRecord() {
 			case 1:
 				cout << "What is your new name?\n";
 				getline(cin >> ws, editName);
-				while (!editProject.eof()) {
+				do {
 					editProject >> read;
 					getline(editProject >> ws, readWords);
 					if (read == "Name") {
 						temp << read << "\t\t";
 						temp << editName << "\n";
+
 					}
 					else if (read == "Task") {
 						temp << read << " ";
@@ -116,13 +123,13 @@ void RecordManager::editRecord() {
 						temp << read << "\t\t";
 						temp << readWords << "\n";
 					}
-				}
+				} while (read != "Time");
 				temp.close();
 				editProject.close();
 				projectEdited.open(pathEdit);
 				tempFile.open("d:\\Files\\TempRecord.txt");
 				x = '\0';
-				
+
 				while (!tempFile.eof()) {
 					tempFile.get(x);
 					projectEdited << x;
@@ -135,7 +142,7 @@ void RecordManager::editRecord() {
 				cout << "What is your  new task duration?\n";
 				getline(cin >> ws, editTaskDuration);
 
-				while (!editProject.eof()) {
+				do {
 					editProject >> read;
 					getline(editProject >> ws, readWords);
 					if (read == "Task") {
@@ -146,7 +153,7 @@ void RecordManager::editRecord() {
 						temp << read << "\t\t";
 						temp << readWords << "\n";
 					}
-				}
+				} while (read != "Time");
 				temp.close();
 				editProject.close();
 				projectEdited.open(pathEdit);
@@ -165,7 +172,7 @@ void RecordManager::editRecord() {
 			case 3:
 				cout << "What is your new address?\n";
 				getline(cin >> ws, editAddress);
-				while (!editProject.eof()) {
+				do {
 					editProject >> read;
 					getline(editProject >> ws, readWords);
 					if (read == "Address") {
@@ -180,7 +187,7 @@ void RecordManager::editRecord() {
 						temp << read << "\t\t";
 						temp << readWords << "\n";
 					}
-				}
+				} while (read != "Time");
 				temp.close();
 				editProject.close();
 				projectEdited.open(pathEdit);
@@ -196,7 +203,7 @@ void RecordManager::editRecord() {
 			case 4:
 				cout << "What is the new date?   (DD/MM/YYYY)\n";
 				getline(cin >> ws, editDate);
-				while (!editProject.eof()) {
+				do {
 					editProject >> read;
 					getline(editProject >> ws, readWords);
 					if (read == "Date") {
@@ -211,7 +218,7 @@ void RecordManager::editRecord() {
 						temp << read << "\t\t";
 						temp << readWords << "\n";
 					}
-				}
+				} while (read != "Time");
 				temp.close();
 				editProject.close();
 				projectEdited.open(pathEdit);
@@ -226,9 +233,9 @@ void RecordManager::editRecord() {
 
 				break;
 			case 5:
-				cout << "What is the new time?  00:00Pm\n";
+				cout << "What is the new time?  (00:00 Pm/Am)\n";
 				getline(cin >> ws, editTime);
-				while (!editProject.eof()) {
+				do {
 					editProject >> read;
 					getline(editProject >> ws, readWords);
 					if (read == "Time") {
@@ -243,7 +250,7 @@ void RecordManager::editRecord() {
 						temp << read << "\t\t";
 						temp << readWords << "\n";
 					}
-				}
+				} while (read != "Time");
 				temp.close();
 				editProject.close();
 				projectEdited.open(pathEdit);
@@ -294,12 +301,12 @@ void RecordManager::deleteRecord() {
 			project.close();
 		}
 		if (d == 0) {
-			cout << "There is no such a record name\nDo you still want to make an edit to a record"
+			cout << "There is no such a record name\nDo you still want to delete a record"
 				<< "\n1.Yes\t\t\t2.No";
 			int yn;
 			cin >> yn;
 			if (yn == 1) {
-				editRecord();
+				deleteRecord();
 			}
 			else if (yn != 2) {
 				cout << "Invaild number\n";

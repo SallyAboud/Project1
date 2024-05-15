@@ -17,18 +17,66 @@ void Menu::displayMainMenu() {
 
 }
 void Menu::displayRecordList() {
+	cout << "What is the manager password?\n";
 	string pass;
-	cout << "Enter your password\n";
-	getline(cin >> ws, pass);
-	if(pass==getPassword()){
-	cout << "\n\tName\t\t" << name
-	<< "\n\tTask_duration\t" << taskDuration
-	<< "\n\tAddress\t\t" << address
-	<< "\n\tDate\t\t" << date 
-	<< "\n\ttime\t\t" << time << "\n";
+	string DisplayName;
+	int d = 0;
+	cin >> pass;
+	if (pass == managerpass) {
+		cout << "What is the name of the File you want to display?\n";
+		getline(cin >> ws, DisplayName);
+		for (int i = 1; i <= s; i++) {
+			string path = "d:\\Files\\Record";
+			path += char(i + 48);
+			path += ".txt";
+			ifstream project(path);
+			string x, y;
+			while (!project.eof()) {
+				project >> y;
+				getline(project >> ws, x);
+				if (DisplayName == x) {
+					d = i;
+					break;
+				}
+			}
+			project.close();
+		}
+		if (d == 0) {
+			cout << "There is no such a record name\nDo you still want to display the record"
+				<< "\n1.Yes\t\t\t2.No";
+			int yn;
+			cin >> yn;
+			if (yn == 1) {
+				displayRecordList();
+			}
+			else if (yn != 2) {
+				cout << "Invaild number\n";
+			}
+		}
+		else {
+			string userPass;
+			cout << "What is the user password?\n";
+			cin >> userPass;
+			if (userPass == passes.at(d - 1)) {
+				string path = "d:\\Files\\Record";
+				path += char(d + 48);
+				path += ".txt";
+				ifstream project(path);
+				char x;
+				while (!project.eof()) {
+					project.get(x);
+					cout << x;
+				}
+				project.close();
+			}
+			else {
+				cout << "Incorrect Password";
+			}
+
+		}
 	}
 	else {
-		cout<<"Incorrect password"<<endl;
+		cout << "Incorrect password";
 		displayRecordList();
 	}
 		
@@ -70,7 +118,7 @@ void Menu::getUserChoice() {
 	case 4:
 		deleteRecord();
 		updateFile();
-		system("cls");
+		//system("cls");
 		break;
 	case 5:
 		cout << "What is the password manager?\n";
