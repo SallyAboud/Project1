@@ -10,11 +10,11 @@ void RecordManager::addRecord() {
 	s += 1;
 	id = s;
 	string setPass;
-	cout << "What is your name?\n";
+	cout << "What is your record name?\n";
 	getline(cin >> ws, name);
 	cout << "What is your task duration?\n";
 	getline(cin >> ws, taskDuration);
-	cout << "What is your address?\n";
+	cout << "What is your record address?\n";
 	getline(cin >> ws, address);
 	cout << "What is the date  (DD/MM/YYYY)?\n";
 	getline(cin >> ws, date);
@@ -105,7 +105,7 @@ void RecordManager::editRecord() {
 			ifstream tempFile;
 			switch (a) {
 			case 1:
-				cout << "What is your new name?\n";
+				cout << "What is your record new name?\n";
 				getline(cin >> ws, editName);
 				do {
 					editProject >> read;
@@ -170,7 +170,7 @@ void RecordManager::editRecord() {
 
 				break;
 			case 3:
-				cout << "What is your new address?\n";
+				cout << "What is your record new address?\n";
 				getline(cin >> ws, editAddress);
 				do {
 					editProject >> read;
@@ -264,9 +264,9 @@ void RecordManager::editRecord() {
 				projectEdited.close();
 				break;
 			default:
-				cout << "invalid number\n";
+				cout << "Invalid number\n";
 			}
-			cout << "do you want to make any other changes to:\n1.Name\n2.Task Duration"
+			cout << "Do you want to make any other changes to:\n1.Name\n2.Task Duration"
 				<< "\n3.Address\n4.Date\n5.Time\n6.quit\n";
 			cin >> a;
 		}
@@ -283,7 +283,7 @@ void RecordManager::deleteRecord() {
 	int d = 0;
 	cin >> pass;
 	if (pass == managerpass) {
-		cout << "What is the name of the File you want to delete?\n";
+		cout << "What is the name of the record you want to delete?\n";
 		getline(cin >> ws, DeleteName);
 		for (int i = 1; i <= s; i++) {
 			string path = "d:\\Files\\Record";
