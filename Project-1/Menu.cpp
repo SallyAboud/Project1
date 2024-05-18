@@ -7,11 +7,12 @@
 #include <fstream>
 using namespace std;
 int num;
+int d = 0;
 string newpass;
 void Menu::displayMainMenu() {
 	cout << "\t\tMain Menu\n1.Add Record\n2.View Record List\n"
-		<<"3.Edit Record\n4.Delete Record\n5.Make New Password\n"
-		<<"6.Display New Password\n7.Display Record List\n"
+		<<"3.Edit Record\n4.Delete Record\n5.Make a new Password\n"
+		<<"6.Display the Password\n7.Display Record List\n"
 		<<"8.Quit\n" << endl;
 	getUserChoice();
 
@@ -23,7 +24,7 @@ void Menu::displayRecordList() {
 	int d = 0;
 	cin >> pass;
 	if (pass == managerpass) {
-		cout << "What is the name of the File you want to display?\n";
+		cout << "What is the name of the Record you want to display?\n";
 		getline(cin >> ws, DisplayName);
 		for (int i = 1; i <= s; i++) {
 			string path = "d:\\Files\\Record";
@@ -70,13 +71,13 @@ void Menu::displayRecordList() {
 				project.close();
 			}
 			else {
-				cout << "Incorrect Password";
+				cout << "Incorrect Password\n";
 			}
 
 		}
 	}
 	else {
-		cout << "Incorrect password";
+		cout << "Incorrect password\n";
 		displayRecordList();
 	}
 		
@@ -84,6 +85,7 @@ void Menu::displayRecordList() {
 void Menu::getUserChoice() {
 	cin >> num;
 	int x;
+	string passName;
 	string p="";
 	string setPass;
 	switch (num) {
@@ -91,7 +93,7 @@ void Menu::getUserChoice() {
 		cout << "What is the password manager?\n";
 		cin >> p;
 		while (p != managerpass) {
-			cout << "incorrect password";
+			cout << "Incorrect password\n";
 			cout << "What is the password manager?\n";
 			cin >> p;
 		}
@@ -114,8 +116,7 @@ void Menu::getUserChoice() {
 		break;
 	case 4:
 		deleteRecord();
-		updateFile();
-		//system("cls");
+		system("cls");
 		break;
 	case 5:
 		cout << "What is the password manager?\n";
@@ -125,9 +126,42 @@ void Menu::getUserChoice() {
 			cout << "What is the password manager?\n";
 			cin >> p;
 		}
-		cout << "Enter the new password " << endl;
-		getline(cin >> ws, newpass);
-		setPassword(newpass);
+		cout << "Enter the record name you want to edit its password\n";
+		getline(cin >> ws, passName);
+		for (int i = 1; i <= s; i++) {
+			string path = "d:\\Files\\Record";
+			path += char(i + 48);
+			path += ".txt";
+			ifstream project(path);
+			string x, y;
+			while (!project.eof()) {
+				project >> y;
+				getline(project >> ws, x);
+				if (passName == x) {
+					d = i;
+					break;
+				}
+			}
+			project.close();
+		}
+		if (d == 0) {
+			cout << "There is no such a record name\nDo you still want to delete a record"
+				<< "\n1.Yes\t\t\t2.No\n";
+			int yn;
+			cin >> yn;
+			if (yn == 1) {
+				deleteRecord();
+			}
+			else if (yn != 2) {
+				cout << "Invaild number\n";
+			}
+		}
+		else {
+
+			cout << "Enter the new password " << endl;
+			getline(cin >> ws, newpass);
+			passes.at(d - 1) = newpass;
+		}
 		system("cls");
 		break;
 	case 6:
@@ -137,12 +171,46 @@ void Menu::getUserChoice() {
 			cout << "Incorrect password\n";
 			cout << "What is the password manager?\n";
 			cin >> p;
-		} 
-		cout << "The password is:\n" << getPassword() << "\n";
-		cout << "if you want to clear the screen enter 0 " << endl;
-		cin >> x;
-		if (x == 0) {
-			system("cls");
+		}cout << "Enter the record name you want to edit its password\n";
+		getline(cin >> ws, passName);
+		for (int i = 1; i <= s; i++) {
+			string path = "d:\\Files\\Record";
+			path += char(i + 48);
+			path += ".txt";
+			ifstream project(path);
+			string x, y;
+			while (!project.eof()) {
+				project >> y;
+				getline(project >> ws, x);
+				if (passName == x) {
+					d = i;
+					break;
+				}
+			}
+			project.close();
+		}
+		if (d == 0) {
+			cout << "There is no such a record name\nDo you still want to delete a record"
+				<< "\n1.Yes\t\t\t2.No\n";
+			int yn;
+			cin >> yn;
+			if (yn == 1) {
+				deleteRecord();
+			}
+			else if (yn != 2) {
+				cout << "Invaild number\n";
+			}
+			else {
+				system("cls");
+			}
+		}
+		else {
+			cout << "The password is:\n" << passes.at(d - 1) << "\n";
+			cout << "if you want to clear the screen enter 0 " << endl;
+			cin >> x;
+			if (x == 0) {
+				system("cls");
+			}
 		}
 		break;
 	case 7: 

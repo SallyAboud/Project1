@@ -88,187 +88,189 @@ void RecordManager::editRecord() {
 				cout << "Invaild number\n";
 			}
 		}
-		cout << "Do you want to make changes to:\n1.Name\n2.Task Duration"
-			<< "\n3.Address\n4.Date\n5.Time\n6.Quit\n";
-		int a;
-		string editName, editTaskDuration, editAddress, editDate, editTime;
-		cin >> a;
-		string read, readWords;
-		string pathEdit = "d:\\Files\\Record";
-		pathEdit += char(d + 48);
-		pathEdit += ".txt";
-		char x;
-		while (a != 6) {
-			ifstream editProject(pathEdit);
-			ofstream temp("d:\\Files\\TempRecord.txt");
-			ofstream projectEdited;
-			ifstream tempFile;
-			switch (a) {
-			case 1:
-				cout << "What is your record new name?\n";
-				getline(cin >> ws, editName);
-				do {
-					editProject >> read;
-					getline(editProject >> ws, readWords);
-					if (read == "Name") {
-						temp << read << "\t\t";
-						temp << editName << "\n";
-
-					}
-					else if (read == "Task") {
-						temp << read << " ";
-						temp << readWords << "\n";
-					}
-					else {
-						temp << read << "\t\t";
-						temp << readWords << "\n";
-					}
-				} while (read != "Time");
-				temp.close();
-				editProject.close();
-				projectEdited.open(pathEdit);
-				tempFile.open("d:\\Files\\TempRecord.txt");
-				x = '\0';
-
-				while (!tempFile.eof()) {
-					tempFile.get(x);
-					projectEdited << x;
-				}
-				tempFile.close();
-				projectEdited.close();
-
-				break;
-			case 2:
-				cout << "What is your  new task duration?\n";
-				getline(cin >> ws, editTaskDuration);
-
-				do {
-					editProject >> read;
-					getline(editProject >> ws, readWords);
-					if (read == "Task") {
-						temp << read << " duration\t";
-						temp << editTaskDuration << "\n";
-					}
-					else {
-						temp << read << "\t\t";
-						temp << readWords << "\n";
-					}
-				} while (read != "Time");
-				temp.close();
-				editProject.close();
-				projectEdited.open(pathEdit);
-				tempFile.open("d:\\Files\\TempRecord.txt");
-				x = '\0';
-				while (!tempFile.eof()) {
-					tempFile.get(x);
-					projectEdited << x;
-				}
-				tempFile.close();
-				projectEdited.close();
-
-
-
-				break;
-			case 3:
-				cout << "What is your record new address?\n";
-				getline(cin >> ws, editAddress);
-				do {
-					editProject >> read;
-					getline(editProject >> ws, readWords);
-					if (read == "Address") {
-						temp << read << "\t\t";
-						temp << editAddress << "\n";
-					}
-					else if (read == "Task") {
-						temp << read << " ";
-						temp << readWords << "\n";
-					}
-					else {
-						temp << read << "\t\t";
-						temp << readWords << "\n";
-					}
-				} while (read != "Time");
-				temp.close();
-				editProject.close();
-				projectEdited.open(pathEdit);
-				tempFile.open("d:\\Files\\TempRecord.txt");
-				x = '\0';
-				while (!tempFile.eof()) {
-					tempFile.get(x);
-					projectEdited << x;
-				}
-				tempFile.close();
-				projectEdited.close();
-				break;
-			case 4:
-				cout << "What is the new date?   (DD/MM/YYYY)\n";
-				getline(cin >> ws, editDate);
-				do {
-					editProject >> read;
-					getline(editProject >> ws, readWords);
-					if (read == "Date") {
-						temp << read << "\t\t";
-						temp << editDate << "\n";
-					}
-					else if (read == "Task") {
-						temp << read << " ";
-						temp << readWords << "\n";
-					}
-					else {
-						temp << read << "\t\t";
-						temp << readWords << "\n";
-					}
-				} while (read != "Time");
-				temp.close();
-				editProject.close();
-				projectEdited.open(pathEdit);
-				tempFile.open("d:\\Files\\TempRecord.txt");
-				x = '\0';
-				while (!tempFile.eof()) {
-					tempFile.get(x);
-					projectEdited << x;
-				}
-				tempFile.close();
-				projectEdited.close();
-
-				break;
-			case 5:
-				cout << "What is the new time?  (00:00 Pm/Am)\n";
-				getline(cin >> ws, editTime);
-				do {
-					editProject >> read;
-					getline(editProject >> ws, readWords);
-					if (read == "Time") {
-						temp << read << "\t\t";
-						temp << editTime << "\n";
-					}
-					else if (read == "Task") {
-						temp << read << " ";
-						temp << readWords << "\n";
-					}
-					else {
-						temp << read << "\t\t";
-						temp << readWords << "\n";
-					}
-				} while (read != "Time");
-				temp.close();
-				editProject.close();
-				projectEdited.open(pathEdit);
-				tempFile.open("d:\\Files\\TempRecord.txt");
-				x = '\0';
-				while (!tempFile.eof()) {
-					tempFile.get(x);
-					projectEdited << x;
-				}
-				tempFile.close();
-				projectEdited.close();
-				break;
-			default:
-				cout << "Invalid number\n";
-			}
-			cout << "Do you want to make any other changes to:\n1.Name\n2.Task Duration"
-				<< "\n3.Address\n4.Date\n5.Time\n6.quit\n";
+		else {
+			cout << "Do you want to make changes to:\n1.Name\n2.Task Duration"
+				<< "\n3.Address\n4.Date\n5.Time\n6.Quit\n";
+			int a;
+			string editName, editTaskDuration, editAddress, editDate, editTime;
 			cin >> a;
+			string read, readWords;
+			string pathEdit = "d:\\Files\\Record";
+			pathEdit += char(d + 48);
+			pathEdit += ".txt";
+			char x;
+			while (a != 6) {
+				ifstream editProject(pathEdit);
+				ofstream temp("d:\\Files\\TempRecord.txt");
+				ofstream projectEdited;
+				ifstream tempFile;
+				switch (a) {
+				case 1:
+					cout << "What is your record new name?\n";
+					getline(cin >> ws, editName);
+					do {
+						editProject >> read;
+						getline(editProject >> ws, readWords);
+						if (read == "Name") {
+							temp << read << "\t\t";
+							temp << editName << "\n";
+
+						}
+						else if (read == "Task") {
+							temp << read << " ";
+							temp << readWords << "\n";
+						}
+						else {
+							temp << read << "\t\t";
+							temp << readWords << "\n";
+						}
+					} while (read != "Time");
+					temp.close();
+					editProject.close();
+					projectEdited.open(pathEdit);
+					tempFile.open("d:\\Files\\TempRecord.txt");
+					x = '\0';
+
+					while (!tempFile.eof()) {
+						tempFile.get(x);
+						projectEdited << x;
+					}
+					tempFile.close();
+					projectEdited.close();
+
+					break;
+				case 2:
+					cout << "What is your  new task duration?\n";
+					getline(cin >> ws, editTaskDuration);
+
+					do {
+						editProject >> read;
+						getline(editProject >> ws, readWords);
+						if (read == "Task") {
+							temp << read << " duration\t";
+							temp << editTaskDuration << "\n";
+						}
+						else {
+							temp << read << "\t\t";
+							temp << readWords << "\n";
+						}
+					} while (read != "Time");
+					temp.close();
+					editProject.close();
+					projectEdited.open(pathEdit);
+					tempFile.open("d:\\Files\\TempRecord.txt");
+					x = '\0';
+					while (!tempFile.eof()) {
+						tempFile.get(x);
+						projectEdited << x;
+					}
+					tempFile.close();
+					projectEdited.close();
+
+
+
+					break;
+				case 3:
+					cout << "What is your record new address?\n";
+					getline(cin >> ws, editAddress);
+					do {
+						editProject >> read;
+						getline(editProject >> ws, readWords);
+						if (read == "Address") {
+							temp << read << "\t\t";
+							temp << editAddress << "\n";
+						}
+						else if (read == "Task") {
+							temp << read << " ";
+							temp << readWords << "\n";
+						}
+						else {
+							temp << read << "\t\t";
+							temp << readWords << "\n";
+						}
+					} while (read != "Time");
+					temp.close();
+					editProject.close();
+					projectEdited.open(pathEdit);
+					tempFile.open("d:\\Files\\TempRecord.txt");
+					x = '\0';
+					while (!tempFile.eof()) {
+						tempFile.get(x);
+						projectEdited << x;
+					}
+					tempFile.close();
+					projectEdited.close();
+					break;
+				case 4:
+					cout << "What is the new date?   (DD/MM/YYYY)\n";
+					getline(cin >> ws, editDate);
+					do {
+						editProject >> read;
+						getline(editProject >> ws, readWords);
+						if (read == "Date") {
+							temp << read << "\t\t";
+							temp << editDate << "\n";
+						}
+						else if (read == "Task") {
+							temp << read << " ";
+							temp << readWords << "\n";
+						}
+						else {
+							temp << read << "\t\t";
+							temp << readWords << "\n";
+						}
+					} while (read != "Time");
+					temp.close();
+					editProject.close();
+					projectEdited.open(pathEdit);
+					tempFile.open("d:\\Files\\TempRecord.txt");
+					x = '\0';
+					while (!tempFile.eof()) {
+						tempFile.get(x);
+						projectEdited << x;
+					}
+					tempFile.close();
+					projectEdited.close();
+
+					break;
+				case 5:
+					cout << "What is the new time?  (00:00 Pm/Am)\n";
+					getline(cin >> ws, editTime);
+					do {
+						editProject >> read;
+						getline(editProject >> ws, readWords);
+						if (read == "Time") {
+							temp << read << "\t\t";
+							temp << editTime << "\n";
+						}
+						else if (read == "Task") {
+							temp << read << " ";
+							temp << readWords << "\n";
+						}
+						else {
+							temp << read << "\t\t";
+							temp << readWords << "\n";
+						}
+					} while (read != "Time");
+					temp.close();
+					editProject.close();
+					projectEdited.open(pathEdit);
+					tempFile.open("d:\\Files\\TempRecord.txt");
+					x = '\0';
+					while (!tempFile.eof()) {
+						tempFile.get(x);
+						projectEdited << x;
+					}
+					tempFile.close();
+					projectEdited.close();
+					break;
+				default:
+					cout << "Invalid number\n";
+				}
+				cout << "Do you want to make any other changes to:\n1.Name\n2.Task Duration"
+					<< "\n3.Address\n4.Date\n5.Time\n6.quit\n";
+				cin >> a;
+			}
 		}
 	}
 	else {
